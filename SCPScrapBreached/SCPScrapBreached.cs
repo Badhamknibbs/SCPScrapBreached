@@ -27,7 +27,6 @@ namespace SCPScrapBreached
             Instance = this;
 
             NetcodePatcher();
-            Patch();
 
             string AssemblyLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
@@ -46,24 +45,6 @@ namespace SCPScrapBreached
             PatchedContent.RegisterExtendedMod(ExtendedMod);
 
             Logger.LogInfo($"{MyPluginInfo.PLUGIN_GUID} v{MyPluginInfo.PLUGIN_VERSION} has loaded!");
-        }
-
-        internal static void Patch() {
-            Harmony ??= new Harmony(MyPluginInfo.PLUGIN_GUID);
-
-            Logger.LogDebug("Patching...");
-
-            Harmony.PatchAll();
-
-            Logger.LogDebug("Finished patching!");
-        }
-
-        internal static void Unpatch() {
-            Logger.LogDebug("Unpatching...");
-
-            Harmony?.UnpatchSelf();
-
-            Logger.LogDebug("Finished unpatching!");
         }
 
         private void NetcodePatcher() {
